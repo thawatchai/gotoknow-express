@@ -1,6 +1,6 @@
 {
   "name": "GotoKnow Express",
-  "version": "1.0",
+  "version": "0.1.0",
   "manifest_version": 2,
   "description": "Easily write your GotoKnow journal entries with this Chrome extention",
   "browser_action": {

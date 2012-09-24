@@ -1,7 +1,7 @@
 body {
   padding: 0;
   margin: 20px;
-  height: 340px;
+  height: 250px;
   width: 500px;
 }
 
@@ -9,14 +9,38 @@ form.form-journal-entry {
 }
 
 form.form-journal-entry textarea {
-  height: 200px;
+  height: 120px;
   width: 486px;
 }
 
-/*a, a:active, a:focus { outline: none; }*/
+a, a:active, a:focus { outline: none; }
+
+a, a:hover {
+  color: #00b;
+}
+
+.row {
+  margin: 0;
+  width: 500px;
+}
 
 #logo {
-  padding-bottom: 10px;
+  float: left;
+  width: 110px;
+}
+
+#user {
+  float: left;
+  text-align: right;
+  width: 390px;
+}
+
+#journal-entry-title {
+  padding-bottom: 6px;
+}
+
+#toolbar {
+  padding-bottom: 6px;
 }
 
 #indicator {

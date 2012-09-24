@@ -10,15 +10,26 @@
     <script type="text/javascript" src="javascripts/bootstrap/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <img src="images/gotoknow.jpg" height="40" width="105" id="logo" class="home-link" />
+    <div class="row">
+      <div id="logo">
+        <img src="images/gotoknow.jpg" height="40" width="105" class="home-link" />
+      </div>
+      <div id="user">
+        <a href=""><span id="user-login-message">Please login to GotoKnow first</span></a>
+        <div id="journal-entry-title">What are you working on?</div>
+      </div>
+    </div>
+    <div class="row" id="toolbar">
+      <div><a class="btn btn-small" id="share-this-page-button"><i class="icon-share"></i> <span id="share-this-page">share this page</span></a></div>
+    </div>
     <form class="form-journal-entry">
-      <textarea></textarea>
+      <textarea id="form-content"></textarea>
       <button type="submit" class="btn btn-primary" id="form-submit">Submit</button>
       <span id="indicator">
         <image src="images/indicator_white.gif">
       </span>
+      <span id="message"></span>
     </form>
-    <a class="home-link">Home</a>
 
     <script type="text/javascript" src="i18n.js"></script>
     <script type="text/javascript" src="popup.js"></script>
