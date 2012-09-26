@@ -1,3 +1,6 @@
+var HOST = 'http://www.gotoknow.org'
+//var HOST = 'http://www.kv.dev'
+
 $(document).ready(function() {
 
   // enable the submit button when content has text.
@@ -10,7 +13,7 @@ $(document).ready(function() {
   $('#form-content').on('keyup', toggle_form_submit);
 
   // get the username
-  $.getJSON('http://www.gotoknow.org/api/users/full_name.json', {},
+  $.getJSON(HOST + '/api/users/full_name.json', {},
     function(data, textStatus, jqXHR) {
       $("#user-login-message").
         removeClass("not-logged-in").
@@ -18,6 +21,7 @@ $(document).ready(function() {
         html(data);
     }).error(function(jqXHR, textStatus, data) {
       // not sure what to do yet.
+      $('#user-login-message')._t('user-login-message');
       $("#user-login-message").
         removeClass("logged-in").
         addClass("not-logged-in");
@@ -27,14 +31,15 @@ $(document).ready(function() {
 
   // .home-link navigates to GotoKnow
   $('.home-link').on('click', function() {
-    chrome.tabs.create({'url': 'http://www.gotoknow.org/'});
+    chrome.tabs.create({'url': HOST });
   });
 
   // 'no login' message navigates to GotoKnow
+  // user.full_name goes to dashboard
   $('#user-login-message').on('click', function(event) {
     chrome.tabs.create({'url': ($(event.target).hasClass("not-logged-in") ?
-                               'http://www.gotoknow.org/user_session/new' :
-                               'http://www.gotoknow.org/dashboard') });
+                               HOST + '/user_session/new' :
+                               HOST + '/dashboard') });
   });
 
   // return a markdown link
@@ -42,12 +47,14 @@ $(document).ready(function() {
     return '[' + title.replace('[', '').replace(']', '') + '](' + url.replace('(', '').replace(')', '') + ')'
   }
 
-  // event binding: when pressed #share-this-page-button, put a markdown link of the selected tab to the textarea
+  // event binding: when pressed #share-this-page-button,
+  // put a markdown link of the selected tab to the textarea
   $('#share-this-page-button').on('click', function(e) {
     chrome.tabs.getSelected(null, function(tab) {
       var c = $('#form-content');
       c.val(c.val() + markdown_link(tab.title, tab.url));
       $('#form-content').change();
+      toggle_form_submit();
     });
   });
 
@@ -56,17 +63,21 @@ $(document).ready(function() {
     var form = $(event.target);
 
     form.find("#indicator").removeClass("hidden");
-    $.post('http://www.gotoknow.org/api/journals/entries.json', {
+    $.post(HOST + '/api/journals/entries.json', {
         content: form.find('#form-content').val()
       },
       function(data, textStatus, jqXHR) {
-        // not sure what to do yet.
+        $('#form-content').val('');
+        toggle_form_submit();
+        delete localStorage['gotoknow-express-form-content'];
+        form.find("#indicator").addClass("hidden");
+        $('#success-message').show().fadeOut(2500);
       },
       "json"
     ).error(function(jqXHR, textStatus, data) {
-      alert(data);
+      $('#success-message').show();
     }).complete(function(jqXHR, textStatus, data) {
-      form.find("#indicator").addClass("hidden");
+      // nothing
     });
     event.preventDefault();
     return true;
@@ -86,3 +97,8 @@ $(document).ready(function() {
   toggle_form_submit();
 });
 
+/*
+ * ISSUES
+ * ------
+ * change isn't triggered when unloaded in Chrome Canary
+ */

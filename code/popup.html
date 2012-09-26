@@ -15,8 +15,8 @@
         <img src="images/gotoknow.jpg" height="40" width="105" class="home-link" />
       </div>
       <div id="user">
-        <a href=""><span id="user-login-message">Please login to GotoKnow first</span></a>
-        <div id="journal-entry-title">What are you working on?</div>
+        <a href=""><span id="user-login-message"></span></a>
+        <!--<div id="journal-entry-title">What are you working on?</div>-->
       </div>
     </div>
     <div class="row" id="toolbar">
@@ -27,6 +27,12 @@
       <button type="submit" class="btn btn-primary" id="form-submit" disabled>Submit</button>
       <span id="indicator" class="hidden">
         <image src="images/indicator_white.gif">
+      </span>
+      <span id="success-message" class="hidden">
+        The journal entry has been posted.
+      </span>
+      <span id="error-message" class="hidden">
+        The journal entry can't be posted. Try again later.
       </span>
       <span id="message"></span>
     </form>
