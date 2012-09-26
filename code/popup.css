@@ -43,6 +43,7 @@ a, a:hover {
   padding-bottom: 6px;
 }
 
-#indicator {
+.hidden {
   display: none;
 }
+
