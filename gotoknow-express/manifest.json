@@ -1,6 +1,6 @@
 {
   "name": "GotoKnow Express",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "manifest_version": 2,
   "description": "Easily write your GotoKnow journal entries with this Chrome extension",
   "icons": {
@@ -14,7 +14,6 @@
   },
   "permissions": [
     "tabs",
-    "http://www.gotoknow.org/",
-    "http://www.kv.dev/"
+    "http://www.gotoknow.org/"
   ]
 }
