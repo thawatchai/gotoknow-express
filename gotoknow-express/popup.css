@@ -6,6 +6,7 @@ body {
 }
 
 form.form-journal-entry {
+  padding-bottom: 20px;
 }
 
 form.form-journal-entry textarea {
@@ -48,3 +49,8 @@ a, a:hover {
   display: none;
 }
 
+#markdown-message {
+  padding-left: 4px;
+  color: #999;
+  font-size: 0.9em;
+}
