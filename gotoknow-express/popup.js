@@ -71,11 +71,15 @@ $(document).ready(function() {
         toggle_form_submit();
         delete localStorage['gotoknow-express-form-content'];
         form.find("#indicator").addClass("hidden");
-        $('#success-message').show().fadeOut(2500);
+        
+        $('#view-link').on('click', function() {
+          chrome.tabs.create({'url': HOST + '/journals/entries/' + data['id'] });
+        });
+        $('#success-message').show().fadeOut(10000);
       },
       "json"
     ).error(function(jqXHR, textStatus, data) {
-      $('#success-message').show();
+      $('#error-message').show();
     }).complete(function(jqXHR, textStatus, data) {
       // nothing
     });

@@ -5,7 +5,8 @@ var thai_i18n = {
   'submit': 'เพิ่มอนุทินใหม่',
   'success-message': 'เพิ่มอนุทินเรียบร้อยแล้ว',
   'error-message': 'ไม่สามารถเพิ่มอนุทินได้ โปรดลองอีกครั้ง',
-  'markdown-message': 'เขียนแบบ Markdown ได้'
+  'markdown-message': 'เขียนแบบ Markdown ได้',
+  'view': 'แสดง'
 }
 
 $.i18n.setDictionary(thai_i18n);
@@ -13,6 +14,7 @@ $.i18n.setDictionary(thai_i18n);
 //$('#journal-entry-title')._t('journal-entry-title');
 $('#share-this-page')._t('share-this-page');
 $('#form-submit')._t('submit');
-$('#success-message')._t('success-message');
+$('#success-message-text')._t('success-message');
 $('#error-message')._t('error-message');
 $('#markdown-message')._t('markdown-message');
+$('#view-link')._t('view');
